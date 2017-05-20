@@ -1,0 +1,10 @@
+0.  Longest word in english dictionary stating some lungs disease
+1.  gets resources usage
+2.  16
+3.  this way getrusage cat store it's results in before and after vars in persistent way
+4.  words are read from file char by char ina cycle until EOF returned which is indication of file content finished. 
+    if current char is alpha or apostroph - it added to current word, and then checked if resulting word is too long - in this case we read chars until word is ended and reset char counter.
+    if current char is number - we also consume remains and skip current word.
+    remaining case - if we encounter a space - we end collected so far word with null char and process resulted string.
+5.  i guess that's because we want to additionaly filter characters read, since only alphas and apostroph is allowed. 
+6.  this an indication for implementor that such params are not supposed to be changed

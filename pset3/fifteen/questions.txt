@@ -1,0 +1,4 @@
+0. from 3 to 9 inclusive
+1. 2-dimensional array of ints
+2. void greet(void);
+3. init, draw, move, won

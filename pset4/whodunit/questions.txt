@@ -1,0 +1,12 @@
+1.  stdint.h is a header file with a definition of standard integer types like 8-bit or 16-bit signed (or unsigned) integer and others similar
+2.  by using uint8_t you can be sure that it will stay exactly 8 bit regardless if CPU is actually 32 or 64 bit (or even 16)
+3.  BYTE - 1 byte, DWORD - 4 bytes, LONG - 4 bytes, WORD - 2 bytes
+4.  BM (ASCII)
+5.  bfSize - size of bitmap file, biSize - size of BITMAPINFOHEADER structure
+6.  negative biHeight indicates top-down bitmap orientation
+7.  biBitCount
+8.  NULL indicates that specified file failed to open in specified mode
+9.  means read _one_ chunk of specified size 
+10. 3
+11. sets file read position to specified point
+12. SEEK_CUR is a constant that indicates that seek position should be calculates starting from current position

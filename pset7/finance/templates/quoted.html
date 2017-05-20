@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get Quote
+{% endblock %}
+
+{% block main %}
+    {% if stock == None %}
+        <div class="alert alert-warning">
+          Sorry, we're unable to find this stock, <a href="/quote">search</a> for something else
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Stock</th>
+                <th>Name</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.price | usd }}</td>
+              </tr>
+            </tbody>
+          </table>
+    {% endif %}
+{% endblock %}

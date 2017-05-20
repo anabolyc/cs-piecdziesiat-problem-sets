@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell Stock
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('sell') }}" method="post">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Amount Available</th>
+            <th>Sell</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for line in rows %}
+          <tr>
+            <td>{{ line.stock }}</td>
+            <td>{{ line.amount }}</td>
+            <td>
+                <input                      name="symbol[{{ loop.index0 }}]" value="{{ line.stock }}" type="hidden" />
+                <input class="form-control" name="amount[{{ loop.index0 }}]" value="0" placeholder="Number to Sell" type="number" min="0" max="{{ line.amount }}"/>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="form-group">
+          <button class="btn btn-default" type="submit">Sell</button>
+      </div>
+    </form>
+{% endblock %}

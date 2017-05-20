@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export API_KEY=Vh7TGmUcnGKmnXBd6TAFdL54Z
+
+export API_SECRET=z1PJ4oJjUOnxG5QMbkhZYBhTz3tZpBbxCnVad8moaWfptpcUgR

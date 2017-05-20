@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import os
+import sys
+import helpers
+
+from analyzer import Analyzer
+from termcolor import colored
+from twython import Twython
+from twython import TwythonAuthError, TwythonError, TwythonRateLimitError
+
+DEF_TWEETS_COUNT = 50
+
+def main():
+
+    # ensure proper usage
+    if len(sys.argv) != 2:
+        sys.exit("Usage: ./tweets @screen_name")
+    screen_name = sys.argv[1]
+    
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+
+    # instantiate analyzer
+    analyzer = Analyzer(positives, negatives)
+
+    tweets = helpers.get_user_timeline(screen_name, count=50)
+    for tweet in tweets:
+        score = analyzer.analyze(tweet)
+        score_string = "{:+d}".format(score).replace("+", " ")
+        msg = "{} {}".format(score_string, tweet)
+        if score > 0.0:
+            print(colored(msg, "green"))
+        elif score < 0.0:
+            print(colored(msg, "red"))
+        else:
+            print(colored(msg, "yellow"))   
+
+if __name__ == "__main__":
+    main()

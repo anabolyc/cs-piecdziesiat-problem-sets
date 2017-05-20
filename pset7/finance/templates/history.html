@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for line in rows %}
+          <tr>
+            <td>{{ line.date }}</td>
+            <td>{{ "BUY" if line.amount > 0 else "SELL" }}</td>
+            <td>{{ line.stock }}</td>
+            <td>{{ line.amount | abs }}</td>
+            <td>{{ line.price | usd }}</td>
+            <td>{{ (line.price * line.amount) | usd }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
